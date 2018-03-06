@@ -1,0 +1,25 @@
+h3 {
+	display: inline;
+	padding-right: 40px;
+}
+
+#my_hand{
+	clear:both;
+	border: 1px solid gray;
+	height: 240px;
+	width: 826px;
+}
+
+.current_hand{
+	float:left;
+}
+
+#controls{
+	clear:both;
+}
+
+/* #btnHit,*/ #btnStick, #btnStep, #btnRestart {
+	display: none;
+	float: left;
+}
+
