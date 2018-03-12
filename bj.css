@@ -4,21 +4,39 @@ h3 {
 }
 
 #my_hand{
+	position: relative;
 	clear:both;
 	border: 1px solid gray;
 	height: 240px;
 	width: 826px;
 }
 
+/*картинка -визуализация рез-тата*/
+#imgResultBad {
+	display: none;
+	position: absolute;
+	left: 25px;
+	/*top: 10px;*/
+}
+
+#imgResultGood {
+	display: none;
+	position: absolute;
+	/*top: 50px;*/
+	left: 44px;
+}
+
+ /* appearDiv's  в к-рых находятся img карт */
 .current_hand{
 	float:left;
 }
 
-#controls{
+/* блок для кнопок-картинок*/
+#controls {
 	clear:both;
 }
 
-/* #btnHit,*/ #btnStick, #btnStep, #btnRestart {
+#btnStick, #btnStep, #btnRestart {
 	display: none;
 	float: left;
 }

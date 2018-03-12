@@ -96,8 +96,10 @@ $(document).ready(function() {
 
 	//   игрок прекращает брать карты, кликая на джокера
 	$("#btnStick").click(function () {
+		$(this).toggle();
 		$('#hdrResult').html("Your RESULT: " + pointScored); 
 		$("#btnStep").toggle();
+		$("#btnRestart").toggle();
 	})
 
     //  дилер сдает игроку 2 карты
@@ -115,27 +117,45 @@ $(document).ready(function() {
  			hand.cards[hand.cards.length] = c;
  			used_cards[used_cards.length] = index;
  			var $appearDiv = $("<div>");
-			$appearDiv/*$("<div>")*/.addClass("current_hand").appendTo("#my_hand");
- 			$("<img>").appendTo($appearDiv/*".current_hand"*/).attr( "src" , 'images/cards/' + c.suit + '/' + c.name + '.jpg' )
+			$appearDiv.addClass("current_hand").appendTo("#my_hand");
+ 			$("<img>").appendTo($appearDiv).attr( "src" , 'images/cards/' + c.suit + '/' + c.name + '.jpg' )
  			.fadeOut('fast')
  			.fadeIn('fast');
- 		} else {
+ 			hand.sumCardsTotal();
+ 			pointScored = hand.current_total;
+	 		$("#hdrTotal").html("Total: "+ pointScored);
+
+	 		if (pointScored <= 21 && hand.cards.length == 5) {
+	 			$("#imgResultGood").toggle(); 
+	 			$("#btnStick").trigger("click"); 
+	 			$("#hdrResult").html("Your 5 cards won!");
+	 		} else if(pointScored == 21) {
+	 			$("#imgResultGood").toggle(); 
+	 			$("#btnStick").trigger("click"); 
+	 			$("#hdrResult").html("Black Jack!"); 
+	 			// $("#imgResultGood").toggle(); 
+	 		} else if(pointScored > 21) {
+	 			$("#imgResultBad").toggle(); 
+	 			$("#btnStick").trigger("click");
+	 			$("#hdrResult").html("BUST! Your total more then 21!");
+	 			// $("#imgResultBad").toggle(); 
+	 		}}  else {
  			step();
- 		};
- 		hand.sumCardsTotal();
- 		pointScored = hand.current_total;
-	 	$("#hdrTotal").html("Total: "+ pointScored);
-		if(pointScored > 21) {
-			$("#btnStick").trigger("click"); 	
-	 		$("#hdrResult").html("BUST! Your total more then 21!");  
-	 	} else if(pointScored == 21) {
-	 		$("#btnStick").trigger("click"); 
-	 		$("#hdrResult").html("Black Jack!");  
-	 	} else if (pointScored <= 21 && hand.cards.length == 5) {
-	 		$("#btnStick").trigger("click"); 
-	 		$("#hdrResult").html("Your 5 cards won!");
-	 	}	
-	}
+ 		}};
+
+//  перезапуск заново
+	$("#btnRestart").on('click', function() {	
+		used_cards.length = 0;
+		$("#my_hand .current_hand").remove();
+		hand.cards.length = 0;
+		$("#hdrResult").empty();
+		hand.current_total = 0;
+		$("#hdrTotal").empty();
+		$("#btnDeal").toggle().trigger("click");
+		$(this).toggle();
+		$("#imgResultGood").css({display: 'none'});
+		$("#imgResultBad").css({display: "none"});
+	})
 });
 
 

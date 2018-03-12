@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Black Jack</title>
-	<link rel="stylesheet" href="bj.css">
-</head>
-<body>
-	<div id="main">
-		<h1>Click to reveal your cards</h1>
-		<h3 id="hdrTotal"></h3>
-		<h3 id="hdrResult"></h3>
-		<div id="my_hand"></div>
-		<div id="controls">
-			<div id="btnDeal">
-				<img src="images/deck_small.jpg" alt="cards">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>Black Jack</title>
+		<link rel="stylesheet" href="bj.css">
+	</head>
+	<body>
+		<div id="main">
+			<h1>Click to reveal your cards</h1>
+			<h3 id="hdrTotal"></h3>
+			<h3 id="hdrResult"></h3>
+			<div id="my_hand">
+				<div id="imgResultBad"><img src="images/x2.png" alt="bad" width="450" height="230"></div>
+				<div id="imgResultGood"><img src="images/check.png" alt="good" width="417" height="250"></div>
 			</div>
-			<div id="btnStep">
-				<img src="images/deck_small.jpg" alt="cards">
-			</div>
-			<div id="btnStick">
-				<img src="images/stick_small.jpg" alt="joker">
+			<div id="controls">
+				<div id="btnDeal">
+					<img src="images/deck_small.jpg" alt="cards">
+				</div>
+				<div id="btnStep">
+					<img src="images/deck_small.jpg" alt="cards">
+				</div>
+				<div id="btnStick">
+					<img src="images/stick_small.jpg" alt="joker">
+				</div>
+				<div id="btnRestart">
+					<img src="images/restart_small.jpg" alt="pack">
+				</div>
 			</div>
 		</div>
-	</div>
-	<script src="scripts/jquery-3.1.1.min.js"></script>
-	<script src="scripts/bj.js"></script>
-</body>
+		<script src="scripts/jquery-3.1.1.min.js"></script>
+		<script src="scripts/bj.js"></script>
+	</body>
 </html>
